@@ -1,0 +1,301 @@
+
+/* ===== Header ===== */
+.school-header {
+  width: 100%;
+  position: relative;
+  z-index: 1000;
+  background: #ffffff;
+  box-shadow: 0 5px 25px rgba(15, 42, 78, 0.07);
+}
+
+.navbar {
+  width: min(100% - 70px, 1400px);
+  min-height: 100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+/* ===== Logo ===== */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.school-logo {
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+  transition: transform 0.35s ease;
+}
+
+.navbar-logo:hover .school-logo {
+  transform: scale(1.07) rotate(-3deg);
+}
+
+.logo-text h2 {
+  margin: 0;
+  color: #123765;
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+  line-height: 1.3;
+}
+
+.logo-text p {
+  margin: 4px 0 0;
+  color: #c28b37;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.1px;
+  text-transform: uppercase;
+}
+
+/* ===== Navigation ===== */
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 27px;
+}
+
+.nav-link {
+  position: relative;
+  padding: 10px 0;
+  color: #35445a;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+  width: 0;
+  height: 2px;
+  background: #c28b37;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active-link {
+  color: #123765;
+}
+
+.nav-link:hover::after,
+.nav-link.active-link::after {
+  width: 100%;
+}
+
+/* ===== Apply Button ===== */
+.admission-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 21px;
+  border: 1px solid #c28b37;
+  border-radius: 5px;
+  background: #c28b37;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 6px 15px rgba(194, 139, 55, 0.18);
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.admission-btn:hover {
+  background: #123765;
+  border-color: #123765;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 9px 22px rgba(18, 55, 101, 0.2);
+}
+
+.admission-btn span {
+  transition: transform 0.3s ease;
+}
+
+.admission-btn:hover span {
+  transform: translate(3px, -3px);
+}
+
+/* ===== Hamburger ===== */
+.menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: #123765;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin: 5px 0;
+  border-radius: 5px;
+  background: #ffffff;
+  transition: 0.3s ease;
+}
+
+.menu-toggle.opened span:first-child {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.opened span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.opened span:last-child {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ===== Tablet & Mobile ===== */
+@media (max-width: 1100px) {
+  .navbar {
+    width: calc(100% - 40px);
+    min-height: 85px;
+  }
+
+  .school-logo {
+    width: 58px;
+    height: 58px;
+  }
+
+  .logo-text h2 {
+    font-size: 20px;
+  }
+
+  .nav-links {
+    gap: 16px;
+  }
+
+  .nav-link {
+    font-size: 13px;
+  }
+
+  .admission-btn {
+    padding: 12px 14px;
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    min-height: 82px;
+  }
+
+  .menu-toggle {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 12px 25px 24px;
+    background: #ffffff;
+    box-shadow: 0 15px 25px rgba(15, 42, 78, 0.1);
+    border-top: 1px solid #edf0f5;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-12px);
+
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  .nav-links.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .nav-link {
+    padding: 15px 5px;
+    border-bottom: 1px solid #edf0f5;
+    font-size: 15px;
+  }
+
+  .nav-link::after {
+    bottom: 7px;
+  }
+
+  .admission-btn {
+    margin-top: 18px;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    width: calc(100% - 28px);
+    min-height: 76px;
+    gap: 10px;
+  }
+
+  .navbar-logo {
+    gap: 9px;
+  }
+
+  .school-logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .logo-text h2 {
+    font-size: 17px;
+    letter-spacing: -0.4px;
+  }
+
+  .logo-text p {
+    font-size: 8px;
+    letter-spacing: 1.2px;
+  }
+
+  .menu-toggle {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .school-logo,
+  .nav-link,
+  .nav-link::after,
+  .admission-btn,
+  .admission-btn span,
+  .menu-toggle span,
+  .nav-links {
+    transition: none;
+  }
+}
